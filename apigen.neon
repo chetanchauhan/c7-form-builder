@@ -1,0 +1,11 @@
+title: C7 Form Builder
+source:
+	- .
+
+destination: docs/
+
+exclude:
+	- node_modules/
+	- docs/
+
+download: true

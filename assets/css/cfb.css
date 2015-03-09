@@ -1,0 +1,74 @@
+/* Base styling for fields and controls
+--------------------------------------------- */
+
+.cfb-empty-control {
+	display: none;
+}
+
+.cfb-field-description {
+	font-size: 13px;
+	font-style: italic;
+}
+
+.cfb-repeatable .cfb-field-control {
+	cursor: move;
+}
+
+.cfb-repeatable-handles {
+	display: inline;
+}
+
+.cfb-repeatable-handles .button {
+	margin-right: 7px;
+}
+
+.cfb-hidden-field-view {
+	display: none;
+}
+
+
+/* Tabs
+--------------------------------------------- */
+
+.cfb-form-tabs-wrapper {
+	margin: 0;
+	padding: 0 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.cfb-form-tabs {
+	display: inline-block;
+	margin: 0 6px 0 0;
+	padding: 6px 10px;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	color: #555;
+	background: #e4e4e4;
+	cursor: pointer;
+}
+
+.cfb-active-tab {
+	margin-bottom: -1px;
+	border-bottom: 1px solid #f1f1f1;
+	background: transparent;
+}
+
+.postbox .cfb-form-tabs-wrapper {
+	border-color: #e8e8e8;
+}
+
+.postbox .cfb-form-tabs {
+	border-color: #e8e8e8;
+	background: #f5f5f5;
+}
+
+.postbox .cfb-active-tab {
+	border-bottom-color: #fff;
+	background: #fff;
+}
+
+.postbox .cfb-form-fields-wrapper.cfb-tab-content {
+	padding: 10px;
+	border: 1px solid #e8e8e8;
+	border-top: none;
+}
