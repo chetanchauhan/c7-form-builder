@@ -1,6 +1,6 @@
 ﻿=== C7 Form Builder ===
 Contributors: chetanchauhan
-Tags: form, forms, custom field, custom fields, meta boxes, meta, meta-box, repeatable, input, field, fields, forms plugin, contact form, contact form builder, form creation, form builder, repeater, more fields, magic fields, advanced custom fields, simple fields, metabox, wysiwyg, editor, TinyMCE, cck, taxonomies, taxonomy, free, color, options, settings, api, theme, admin, framework, cms
+Tags: form, custom fields, meta boxes, meta, repeatable, fields, contact form, form creator, form builder, metabox
 Requires at least: 3.8.0
 Tested up to: 4.1.1
 Stable tag: 1.0.0-beta
@@ -57,6 +57,11 @@ Read the [documentation](https://github.com/chetanchauhan/c7-form-builder/wiki/)
 == Frequently Asked Questions ==
 = Q. Does this plugin has GUI for building forms? =
 A. No. You will need very basic programming skills to build forms with C7 Form Builder. But, if you can register custom post type or taxonomy, you can also create any form using this plugin.
+
+== Screenshots ==
+1. All the currently supported field types.
+2. An example of meta box created using C7 Form Builder.
+3. A simple contact form built with C7 Form Builder.
 
 == Changelog ==
 = 1.0.0-beta =
