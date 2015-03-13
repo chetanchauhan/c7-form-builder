@@ -1,7 +1,7 @@
 # C7 Form Builder #
 
 **Contributors:**      [chetanchauhan](https://github.com/chetanchauhan)  
-**Tags:**              form, forms, custom field, custom fields, meta boxes, meta, meta-box, repeatable, input, field, fields, forms plugin, contact form, contact form builder, form creation, form builder, repeater, more fields, magic fields, advanced custom fields, simple fields, metabox, wysiwyg, editor, TinyMCE, cck, taxonomies, taxonomy, free, color, options, settings, api, theme, admin, framework, cms  
+**Tags:**              form, custom fields, meta boxes, meta, repeatable, fields, contact form, form creator, form builder, metabox    
 **Requires at least:** 3.8.0  
 **Tested up to:**      4.1.1  
 **Stable tag:**        1.0.0-beta  
