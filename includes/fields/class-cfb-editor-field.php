@@ -54,14 +54,6 @@ class CFB_Editor_Field extends CFB_Field {
 	}
 
 	/**
-	 * @since     1.0.0
-	 * @access    public
-	 */
-	public function enqueue() {
-		wp_enqueue_style( 'editor-buttons' );
-	}
-
-	/**
 	 * @return string
 	 */
 	public function get_type() {

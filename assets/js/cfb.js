@@ -164,7 +164,7 @@ window.c7FormBuilder = (function ($) {
 					placeholder: 'cfb-field-control-placeholder',
 					start: function (event, ui) {
 						// Cache the original position.
-						ui.item.data('sortstart-index', ui.item.index());
+						ui.item.data('sortstart-index', ui.item.index() - 1);
 						wp.hooks.doAction('cfb.sortstart', event, ui);
 					},
 					stop: function (event, ui) {
@@ -424,7 +424,7 @@ window.c7FormBuilder = (function ($) {
 			wp.hooks.doAction('cfb.pre_update_controls', controls, field, form);
 
 			controls.each(function () {
-				index = $(this).index();
+				index = $(this).index() - 1;
 				$(this).find('label.cfb-field-label').each(function () {
 					forAttr = $(this).attr('for').replace(idRegex, '$1-' + index);
 					$(this).attr('for', forAttr);
@@ -607,7 +607,7 @@ window.c7FormBuilder = (function ($) {
 	// Update controls after field control position is changed.
 	wp.hooks.addAction('cfb.sortupdate', function (e, ui) {
 		// Check if field control is moved downward/upward and act accordingly.
-		if (ui.item.index() > ui.item.data('sortstart-index')) {
+		if (ui.item.index() - 1 > ui.item.data('sortstart-index')) {
 			cfb.updateControls(ui.item.prevAll('.cfb-field-control').addBack());
 		} else {
 			cfb.updateControls(ui.item.nextAll('.cfb-field-control').addBack());

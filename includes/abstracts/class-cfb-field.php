@@ -527,7 +527,7 @@ abstract class CFB_Field extends CFB_Core {
 
 			// Add empty row value if we are in middle of rendering the field.
 			if ( $this->_doing_render === true ) {
-				$value['x'] = $default_value;
+				$value = array_merge( array( 'x' => $default_value ), $value );
 			}
 
 			return $value;
