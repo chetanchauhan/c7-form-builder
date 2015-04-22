@@ -1,11 +1,13 @@
 ( function( window, undefined ) {
-	"use strict";
+	'use strict';
 
 	/**
 	 * Handles managing all events for whatever you plug it into. Priorities for hooks are based on lowest to highest in
 	 * that, lowest priority hooks are fired first.
 	 */
 	var EventManager = function() {
+		var slice = Array.prototype.slice;
+
 		/**
 		 * Maintain a reference to the object scope so our public methods never get confusing.
 		 */
@@ -49,7 +51,7 @@
 		 * that the first argument must always be the action.
 		 */
 		function doAction( /* action, arg1, arg2, ... */ ) {
-			var args = Array.prototype.slice.call( arguments );
+			var args = slice.call( arguments );
 			var action = args.shift();
 
 			if( typeof action === 'string' ) {
@@ -84,7 +86,7 @@
 		function addFilter( filter, callback, priority, context ) {
 			if( typeof filter === 'string' && typeof callback === 'function' ) {
 				priority = parseInt( ( priority || 10 ), 10 );
-				_addHook( 'filters', filter, callback, priority );
+				_addHook( 'filters', filter, callback, priority, context );
 			}
 
 			return MethodsAvailable;
@@ -95,7 +97,7 @@
 		 * the first argument must always be the filter.
 		 */
 		function applyFilters( /* filter, filtered arg, arg2, ... */ ) {
-			var args = Array.prototype.slice.call( arguments );
+			var args = slice.call( arguments );
 			var filter = args.shift();
 
 			if( typeof filter === 'string' ) {
@@ -127,14 +129,15 @@
 		 * @private
 		 */
 		function _removeHook( type, hook, callback, context ) {
+			var handlers, handler, i;
+
 			if ( !STORAGE[ type ][ hook ] ) {
 				return;
 			}
 			if ( !callback ) {
 				STORAGE[ type ][ hook ] = [];
 			} else {
-				var handlers = STORAGE[ type ][ hook ];
-				var i;
+				handlers = STORAGE[ type ][ hook ];
 				if ( !context ) {
 					for ( i = handlers.length; i--; ) {
 						if ( handlers[i].callback === callback ) {
@@ -144,7 +147,7 @@
 				}
 				else {
 					for ( i = handlers.length; i--; ) {
-						var handler = handlers[i];
+						handler = handlers[i];
 						if ( handler.callback === callback && handler.context === context) {
 							handlers.splice( i, 1 );
 						}
@@ -214,19 +217,19 @@
 		 * @private
 		 */
 		function _runHook( type, hook, args ) {
-			var handlers = STORAGE[ type ][ hook ];
-			
+			var handlers = STORAGE[ type ][ hook ], i, len;
+
 			if ( !handlers ) {
 				return (type === 'filters') ? args[0] : false;
 			}
 
-			var i = 0, len = handlers.length;
+			len = handlers.length;
 			if ( type === 'filters' ) {
-				for ( ; i < len; i++ ) {
+				for ( i = 0; i < len; i++ ) {
 					args[ 0 ] = handlers[ i ].callback.apply( handlers[ i ].context, args );
 				}
 			} else {
-				for ( ; i < len; i++ ) {
+				for ( i = 0; i < len; i++ ) {
 					handlers[ i ].callback.apply( handlers[ i ].context, args );
 				}
 			}
@@ -238,7 +241,7 @@
 		return MethodsAvailable;
 
 	};
-	
+
 	window.wp = window.wp || {};
 	window.wp.hooks = new EventManager();
 
