@@ -66,7 +66,7 @@ window.c7FormBuilder = (function ($) {
 				form.find('.cfb-form-tabs[data-tab="' + tab + '"]').addClass('cfb-active-tab').siblings().removeClass('cfb-active-tab');
 
 				// Toggle the field visibility.
-				form.find('.cfb-field-wrapper').each(
+				form.find('.cfb-form-fields > .cfb-field-wrapper').each(
 					function () {
 						if (($(this).data('tab') === tab)) {
 							$(this).fadeIn();
