@@ -619,7 +619,7 @@ window.c7FormBuilder = (function ($) {
 
 	// Setup Editor Field
 	wp.hooks.addAction('cfb.ready_editor_field_control', cfb.fields.editor.initialize);
-	wp.hooks.addAction('cfb.pre_remove_controls', cfb.fields.editor.destroy);
+	wp.hooks.addAction('cfb.pre_remove_control', cfb.fields.editor.destroy);
 	wp.hooks.addAction('cfb.pre_update_controls', cfb.fields.editor.destroy);
 	wp.hooks.addAction('cfb.updated_controls', cfb.fields.editor.initialize);
 
