@@ -153,6 +153,8 @@ module.exports = function (grunt) {
 					'!Gruntfile.js',
 					'!package.json',
 					'!README.md',
+					'!apigen.neon',
+					'!docs/**',
 					'!**/*~'
 				],
 				dest: 'build/<%= pkg.name %>/'
