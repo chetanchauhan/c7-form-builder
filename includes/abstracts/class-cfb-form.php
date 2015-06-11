@@ -235,7 +235,7 @@ abstract class CFB_Form extends CFB_Core {
 		}
 
 		// Get the submitted data.
-		$submitted_data = $_REQUEST['c7_form_builder'][ $this->get_name() ];
+		$submitted_data = wp_unslash( $_REQUEST['c7_form_builder'][ $this->get_name() ] );
 
 		// Bail if the submission is not valid.
 		if ( ! apply_filters( 'cfb_form_is_submission_valid', $this->is_submission_valid( $submitted_data ), $submitted_data, $this ) ) {

@@ -105,6 +105,8 @@ class CFB_Meta_Storage extends CFB_Storage {
 	 * @param $value
 	 */
 	public function update_value( $value ) {
+		$value = wp_slash( $value );
+
 		// If the value is an associative array, save it as a single metadata entry.
 		if ( is_array( $value ) && cfb_is_array_assoc( $value ) ) {
 			update_metadata( $this->meta_type, $this->get_object_id(), $this->get_storage_key(), $value );
