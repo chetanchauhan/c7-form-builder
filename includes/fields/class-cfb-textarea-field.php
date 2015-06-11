@@ -36,16 +36,6 @@ class CFB_Textarea_Field extends CFB_Field {
 	public $cols = 60;
 
 	/**
-	 * @return void
-	 */
-	protected function initialize() {
-		add_filter( "cfb_filter_{$this->get_type()}_field_value", 'esc_textarea' );
-
-		// Do not remove.
-		parent::initialize();
-	}
-
-	/**
 	 * @param mixed  $value
 	 * @param string $html_name
 	 * @param string $html_id
@@ -66,7 +56,7 @@ class CFB_Textarea_Field extends CFB_Field {
 			)
 		);
 
-		return CFB_Html::tag( 'textarea', $html_attributes, $value, false );
+		return CFB_Html::tag( 'textarea', $html_attributes, esc_textarea( $value ), false );
 
 	}
 
