@@ -127,8 +127,7 @@ window.c7FormBuilder = (function ($) {
 					cfb.getAllFieldControls(selection, {type: 'editor'}).each(function () {
 						var textarea = $(this).find('textarea.wp-editor-area'),
 							id = textarea.attr('id'),
-							ed = tinymce.get(id),
-							qt = QTags.getInstance(id);
+							ed = tinymce.get(id);
 
 						// Save the current id for reinitialization.
 						if (!textarea.attr('data-prev-id')) {
@@ -139,10 +138,9 @@ window.c7FormBuilder = (function ($) {
 							ed.save();
 							ed.remove();
 						}
-						if (qt) {
-							$(this).find('#qt_' + id + '_toolbar').remove();
-							delete QTags.instances[id];
-						}
+
+                        $(this).find('#qt_' + id + '_toolbar').remove();
+                        delete QTags.instances[id];
 					});
 				}
 			}
@@ -163,8 +161,10 @@ window.c7FormBuilder = (function ($) {
 					tolerance: 'pointer',
 					placeholder: 'cfb-field-control-placeholder',
 					start: function (event, ui) {
-						// Cache the original position.
-						ui.item.data('sortstart-index', ui.item.index() - 1);
+                        // Cache the original position.
+                        var index = $(event.target).find('> .cfb-field-control').not('.cfb-empty-control').index(ui.item);
+						ui.item.data('sortstart-index', index);
+
 						wp.hooks.doAction('cfb.sortstart', event, ui);
 					},
 					stop: function (event, ui) {
@@ -424,7 +424,8 @@ window.c7FormBuilder = (function ($) {
 			wp.hooks.doAction('cfb.pre_update_controls', controls, field, form);
 
 			controls.each(function () {
-				index = $(this).index() - 1;
+                index = cfb.getFieldControls(field).index($(this));
+
 				$(this).find('label.cfb-field-label').each(function () {
 					forAttr = $(this).attr('for').replace(idRegex, '$1-' + index);
 					$(this).attr('for', forAttr);
@@ -607,7 +608,9 @@ window.c7FormBuilder = (function ($) {
 	// Update controls after field control position is changed.
 	wp.hooks.addAction('cfb.sortupdate', function (e, ui) {
 		// Check if field control is moved downward/upward and act accordingly.
-		if (ui.item.index() - 1 > ui.item.data('sortstart-index')) {
+        var index = $(e.target).find('> .cfb-field-control').not('.cfb-empty-control').index(ui.item);
+
+		if (index > ui.item.data('sortstart-index')) {
 			cfb.updateControls(ui.item.prevAll('.cfb-field-control').addBack());
 		} else {
 			cfb.updateControls(ui.item.nextAll('.cfb-field-control').addBack());
