@@ -139,8 +139,8 @@ window.c7FormBuilder = (function ($) {
 							ed.remove();
 						}
 
-                        $(this).find('#qt_' + id + '_toolbar').remove();
-                        delete QTags.instances[id];
+						$(this).find('#qt_' + id + '_toolbar').remove();
+						delete QTags.instances[id];
 					});
 				}
 			}
@@ -161,8 +161,8 @@ window.c7FormBuilder = (function ($) {
 					tolerance: 'pointer',
 					placeholder: 'cfb-field-control-placeholder',
 					start: function (event, ui) {
-                        // Cache the original position.
-                        var index = $(event.target).find('> .cfb-field-control').not('.cfb-empty-control').index(ui.item);
+						// Cache the original position.
+						var index = $(event.target).find('> .cfb-field-control').not('.cfb-empty-control').index(ui.item);
 						ui.item.data('sortstart-index', index);
 
 						wp.hooks.doAction('cfb.sortstart', event, ui);
@@ -424,7 +424,7 @@ window.c7FormBuilder = (function ($) {
 			wp.hooks.doAction('cfb.pre_update_controls', controls, field, form);
 
 			controls.each(function () {
-                index = cfb.getFieldControls(field).index($(this));
+				index = cfb.getFieldControls(field).index($(this));
 
 				$(this).find('label.cfb-field-label').each(function () {
 					forAttr = $(this).attr('for').replace(idRegex, '$1-' + index);
@@ -446,57 +446,34 @@ window.c7FormBuilder = (function ($) {
 		},
 
 		/**
-		 * Retrieves the repeatable handles used for adding/removing
-		 * field controls.
+		 * Appends handles to repeatable fields.
 		 *
-		 * @returns {jQuery}
+		 * This adds handles for dynamically adding/removing field controls
+		 * to the repeatable fields.
+		 *
+		 * @param {jQuery} field
 		 */
-		getHandles: function () {
-			var handles = $([
+		appendHandles: function (field) {
+			// Bail early if field is not repeatable.
+			if (!this.isRepeatableField(field)) {
+				return;
+			}
+
+			var repeatableHandles = $([
 				'<div class="cfb-repeatable-handles">',
 				'<a href="#" class="button button-primary cfb-add-control">' + this.l18n('add_control_button_text') + '</a>',
 				'<a href="#" class="button button-secondary cfb-remove-control">' + this.l18n('remove_control_button_text') + '</a>',
 				'</div>'
 			].join(''));
 
-			return wp.hooks.applyFilters('cfb.get_handles', handles);
-		},
+			wp.hooks.doAction('cfb.pre_append_handles', field);
 
-		/**
-		 * Appends the repeatable handles to the field.
-		 *
-		 * @param {jQuery} field
-		 * @param {jQuery} [handles]
-		 * @param {object} [args]
-		 */
-		appendHandles: function (field, handles, args) {
-			// Bail early if field is not repeatable.
-			if (!this.isRepeatableField(field)) {
-				return;
-			}
+			this.getFieldControls(field, true).append(repeatableHandles);
 
-			handles = handles || this.getHandles();
-
-			args = $.extend({}, {
-				'appendAfterEach': true,
-				'handleAfterEach': handles.clone(),
-				'appendAfterAll': false,
-				'handleAfterAll': handles.clone()
-			}, args);
-
-			wp.hooks.doAction('cfb.pre_append_handles', field, handles, args);
-
-			if (args.appendAfterEach) {
-				this.getFieldControls(field, true).append(args.handleAfterEach);
-			}
-			if (args.appendAfterAll) {
-				this.getFieldControlWrapper(field).append(args.handleAfterAll);
-			}
+			wp.hooks.doAction('cfb.appended_handles', field);
 
 			// Toggle the repeatable field handles after they are appended.
 			this.toggleHandles(field);
-
-			wp.hooks.doAction('cfb.appended_handles', field, handles, args);
 		},
 
 		/**
@@ -608,7 +585,7 @@ window.c7FormBuilder = (function ($) {
 	// Update controls after field control position is changed.
 	wp.hooks.addAction('cfb.sortupdate', function (e, ui) {
 		// Check if field control is moved downward/upward and act accordingly.
-        var index = $(e.target).find('> .cfb-field-control').not('.cfb-empty-control').index(ui.item);
+		var index = $(e.target).find('> .cfb-field-control').not('.cfb-empty-control').index(ui.item);
 
 		if (index > ui.item.data('sortstart-index')) {
 			cfb.updateControls(ui.item.prevAll('.cfb-field-control').addBack());
