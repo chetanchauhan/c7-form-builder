@@ -463,9 +463,11 @@ abstract class CFB_Field extends CFB_Core {
 	 */
 	public function get_value() {
 		$value = $this->get_raw_value();
-		$value = $this->apply_filters( $value );
+		if ( $this->is_repeatable() ) {
+			return array_map( array( $this, 'apply_filters' ), $value );
+		}
 
-		return $value;
+		return $this->apply_filters( $value );
 	}
 
 	/**
@@ -547,9 +549,6 @@ abstract class CFB_Field extends CFB_Core {
 	/**
 	 * Apply filters to the passed value.
 	 *
-	 * In case an array of value is passed, then filters
-	 * are applied to all the members of the value array.
-	 *
 	 * @since     1.0.0
 	 * @access    protected
 	 *
@@ -558,14 +557,6 @@ abstract class CFB_Field extends CFB_Core {
 	 * @return mixed $value Sanitized value
 	 */
 	protected function apply_filters( $value ) {
-		if ( is_array( $value ) ) {
-			foreach ( $value as $key => $val ) {
-				$value[ $key ] = $this->apply_filters( $val );
-			}
-
-			return $value;
-		}
-
 		// Applies a general filter to all the fields.
 		$value = apply_filters( 'cfb_filter_field_value', $value, $this );
 
@@ -573,7 +564,6 @@ abstract class CFB_Field extends CFB_Core {
 		$value = apply_filters( "cfb_filter_{$this->get_type()}_field_value", $value, $this );
 
 		return $value;
-
 	}
 
 	/**
