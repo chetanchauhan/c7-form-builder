@@ -36,7 +36,17 @@ class CFB_Textarea_Field extends CFB_Field {
 	public $cols = 60;
 
 	/**
-	 * @param mixed  $value
+	 * @return void
+	 */
+	protected function initialize() {
+		add_filter( "cfb_filter_{$this->get_type()}_field_value", 'wp_kses_post' );
+
+		// Do not remove.
+		parent::initialize();
+	}
+
+	/**
+	 * @param mixed $value
 	 * @param string $html_name
 	 * @param string $html_id
 	 *
