@@ -166,12 +166,15 @@ final class CFB_Main {
 
 		// Enqueue common scripts and styles.
 		wp_enqueue_script( 'cfb-event-manager', C7_FORM_BUILDER_URL . "assets/js/event-manager{$suffix}.js", array(), C7_FORM_BUILDER_VERSION );
-		wp_enqueue_script( 'c7-form-builder', C7_FORM_BUILDER_URL . "assets/js/cfb{$suffix}.js", array( 'jquery', 'cfb-event-manager' ), C7_FORM_BUILDER_VERSION );
+		wp_enqueue_script( 'c7-form-builder', C7_FORM_BUILDER_URL . "assets/js/cfb{$suffix}.js", array(
+			'jquery',
+			'cfb-event-manager',
+		), C7_FORM_BUILDER_VERSION );
 		wp_enqueue_style( 'c7-form-builder', C7_FORM_BUILDER_URL . "assets/css/cfb{$suffix}.css", array(), C7_FORM_BUILDER_VERSION );
 
 		wp_localize_script( 'c7-form-builder', 'cfbL10n', apply_filters( 'cfb_script_localized_data', array(
-					'add_control_button_text' => __( '+', 'c7-form-builder' ),
-					'remove_control_button_text' => __( '-', 'c7-form-builder' ),
+					'add_control_button_text'    => __( 'Add', 'c7-form-builder' ),
+					'remove_control_button_text' => __( 'Remove', 'c7-form-builder' ),
 				)
 			)
 		);
@@ -253,7 +256,7 @@ final class CFB_Main {
 	 *
 	 * @param string $form_name Unique name of the form(required)
 	 * @param string $form_type Type of the form
-	 * @param array  $form_args Form args(optional)
+	 * @param array $form_args Form args(optional)
 	 *
 	 * @return bool
 	 */
@@ -418,10 +421,10 @@ final class CFB_Main {
 	 * @since  1.0.0
 	 * @access public
 	 *
-	 * @param string   $field_type
+	 * @param string $field_type
 	 * @param CFB_Form $form
-	 * @param string   $field_name
-	 * @param array    $field_args
+	 * @param string $field_name
+	 * @param array $field_args
 	 *
 	 * @return false|CFB_Field
 	 */
@@ -477,9 +480,9 @@ final class CFB_Main {
 	 * @since  1.0.0
 	 * @access public
 	 *
-	 * @param  string    $storage_type
+	 * @param  string $storage_type
 	 * @param  CFB_Field $field
-	 * @param  array     $storage_args
+	 * @param  array $storage_args
 	 *
 	 * @return false|CFB_Storage
 	 */
@@ -536,7 +539,7 @@ final class CFB_Main {
 	 *
 	 * @param          $view_type
 	 * @param CFB_Form $form
-	 * @param array    $view_args
+	 * @param array $view_args
 	 *
 	 * @return false|CFB_Form_View
 	 */
@@ -593,7 +596,7 @@ final class CFB_Main {
 	 *
 	 * @param           $view_type
 	 * @param CFB_Field $field
-	 * @param array     $view_args
+	 * @param array $view_args
 	 *
 	 * @return false|CFB_Field_View
 	 */

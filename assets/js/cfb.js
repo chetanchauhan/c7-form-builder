@@ -461,8 +461,8 @@ window.c7FormBuilder = (function ($) {
 
 			var repeatableHandles = $([
 				'<div class="cfb-repeatable-handles">',
-				'<a href="#" class="button button-primary cfb-add-control">' + this.l18n('add_control_button_text') + '</a>',
-				'<a href="#" class="button button-secondary cfb-remove-control">' + this.l18n('remove_control_button_text') + '</a>',
+				'<a href="#" class="cfb-add-control" title="' + this.l18n('add_control_button_text') + '"><span class="cfb-icon-add"></span></a>',
+				'<a href="#" class="cfb-remove-control" title="' + this.l18n('remove_control_button_text') + '"><span class="cfb-icon-remove"></span></a>',
 				'</div>'
 			].join(''));
 
@@ -545,9 +545,9 @@ window.c7FormBuilder = (function ($) {
 			if (!target.length) {
 				target = cfb.getFieldControls(field).last();
 			}
-			if ($(e.target).hasClass('cfb-add-control')) {
+			if ($(e.target).closest('.cfb-add-control').length > 0) {
 				cfb.addControl(target, field, form);
-			} else if ($(e.target).hasClass('cfb-remove-control')) {
+			} else if ($(e.target).closest('.cfb-remove-control').length > 0) {
 				cfb.removeControl(target, field, form);
 			}
 		});
