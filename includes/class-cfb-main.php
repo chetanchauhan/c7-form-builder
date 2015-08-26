@@ -175,6 +175,7 @@ final class CFB_Main {
 		wp_localize_script( 'c7-form-builder', 'cfbL10n', apply_filters( 'cfb_script_localized_data', array(
 					'add_control_button_text'    => __( 'Add', 'c7-form-builder' ),
 					'remove_control_button_text' => __( 'Remove', 'c7-form-builder' ),
+					'sort_control_button_text'   => __( 'Drag to reorder', 'c7-form-builder' ),
 				)
 			)
 		);

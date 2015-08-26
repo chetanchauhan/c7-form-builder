@@ -155,6 +155,7 @@ window.c7FormBuilder = (function ($) {
 				cfb.getFieldControlWrapper(field).sortable({
 					axis: 'y',
 					cursor: 'move',
+					handle: '.cfb-sort-handle',
 					items: ' > .cfb-field-control',
 					forcePlaceholderSize: true,
 					forceHelperSize: true,
@@ -460,15 +461,16 @@ window.c7FormBuilder = (function ($) {
 			}
 
 			var repeatableHandles = $([
-				'<div class="cfb-repeatable-handles">',
-				'<a href="#" class="cfb-add-control" title="' + this.l18n('add_control_button_text') + '"><span class="cfb-icon-add"></span></a>',
-				'<a href="#" class="cfb-remove-control" title="' + this.l18n('remove_control_button_text') + '"><span class="cfb-icon-remove"></span></a>',
-				'</div>'
-			].join(''));
+					'<div class="cfb-repeatable-handles">',
+					'<a href="#" class="cfb-add-control" title="' + this.l18n('add_control_button_text') + '"><span class="cfb-icon-add"></span></a>',
+					'<a href="#" class="cfb-remove-control" title="' + this.l18n('remove_control_button_text') + '"><span class="cfb-icon-remove"></span></a>',
+					'</div>'
+				].join('')),
+				sortHandle = $('<span class="cfb-sort-handle" title="' + this.l18n('sort_control_button_text') + '"><span class="cfb-icon-sort"></span></span>');
 
 			wp.hooks.doAction('cfb.pre_append_handles', field);
 
-			this.getFieldControls(field, true).append(repeatableHandles);
+			this.getFieldControls(field, true).prepend(sortHandle).append(repeatableHandles);
 
 			wp.hooks.doAction('cfb.appended_handles', field);
 

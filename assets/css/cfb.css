@@ -48,16 +48,8 @@
 	font-style: italic;
 }
 
-.cfb-repeatable .cfb-field-control {
-	cursor: move;
-}
-
 .cfb-repeatable-handles {
 	display: inline;
-}
-
-.cfb-repeatable-handles .button {
-	margin-right: 7px;
 }
 
 .cfb-hidden-field-view {
