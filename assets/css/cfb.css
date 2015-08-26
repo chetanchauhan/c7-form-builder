@@ -1,3 +1,41 @@
+/* Font
+--------------------------------------------- */
+
+@font-face {
+	font-family: 'C7 Form Builder';
+	src:url('../fonts/c7-form-builder.eot');
+	src:url('../fonts/c7-form-builder.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/c7-form-builder.ttf') format('truetype'),
+	url('../fonts/c7-form-builder.woff') format('woff'),
+	url('../fonts/c7-form-builder.svg#c7-form-builder') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="cfb-icon-"], [class*=" cfb-icon-"] {
+	font-family: 'C7 Form Builder';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.cfb-icon-add:before {
+	content: "\f055";
+}
+.cfb-icon-remove:before {
+	content: "\f056";
+}
+.cfb-icon-sort:before {
+	content: "\f0dc";
+}
+
 /* Base styling for fields and controls
 --------------------------------------------- */
 
@@ -25,7 +63,6 @@
 .cfb-hidden-field-view {
 	display: none;
 }
-
 
 /* Tabs
 --------------------------------------------- */
