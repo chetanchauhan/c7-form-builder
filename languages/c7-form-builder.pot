@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: C7 Form Builder 1.0.0-beta\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/chetanchauhan/c7-form-builder/issues\n"
-"POT-Creation-Date: 2015-03-09 19:30:35+00:00\n"
+"POT-Creation-Date: 2015-08-31 11:34:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n 0.5.0\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
 "X-Poedit-KeywordsList: "
 "__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
 "attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
@@ -25,12 +25,16 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
-#: includes/class-cfb-main.php:173
-msgid "+"
+#: includes/class-cfb-main.php:176
+msgid "Add"
 msgstr ""
 
-#: includes/class-cfb-main.php:174
-msgid "-"
+#: includes/class-cfb-main.php:177
+msgid "Remove"
+msgstr ""
+
+#: includes/class-cfb-main.php:178
+msgid "Drag to reorder"
 msgstr ""
 
 #: includes/fields/class-cfb-color-field.php:54
