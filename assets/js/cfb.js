@@ -153,7 +153,6 @@ window.c7FormBuilder = (function ($) {
 					return;
 				}
 				cfb.getFieldControlWrapper(field).sortable({
-					axis: 'y',
 					cursor: 'move',
 					handle: '.cfb-sort-handle',
 					items: ' > .cfb-field-control',
