@@ -33,22 +33,22 @@ class CFB_Html {
 	 * @var array
 	 */
 	protected static $_empty_tags = array(
-		'area',
-		'abstracts',
-		'br',
-		'col',
-		'command',
-		'embed',
-		'hr',
-		'img',
-		'input',
-		'keygen',
-		'link',
-		'meta',
-		'param',
-		'source',
-		'track',
-		'wbr',
+		'area'      => true,
+		'abstracts' => true,
+		'br'        => true,
+		'col'       => true,
+		'command'   => true,
+		'embed'     => true,
+		'hr'        => true,
+		'img'       => true,
+		'input'     => true,
+		'keygen'    => true,
+		'link'      => true,
+		'meta'      => true,
+		'param'     => true,
+		'source'    => true,
+		'track'     => true,
+		'wbr'       => true,
 	);
 
 	/**
@@ -57,10 +57,10 @@ class CFB_Html {
 	 * @since     1.0.0
 	 * @access    protected
 	 *
-	 * @param string      $tag_name   A valid HTML tag name
-	 * @param array       $attributes HTML attributes array
-	 * @param bool|string $content    Content to be wrapped within the HTML opening and closing tag
-	 * @param bool        $tidy_html  If true, prevents returning output like '<div></div>'
+	 * @param string $tag_name A valid HTML tag name.
+	 * @param array $attributes HTML attributes array.
+	 * @param bool|string $content Content to be wrapped within the HTML opening and closing tag.
+	 * @param bool $tidy_html If true, prevents returning output like '<div></div>'.
 	 *
 	 * @return string
 	 */
@@ -99,7 +99,7 @@ class CFB_Html {
 
 		foreach ( $attributes as $name => $value ) {
 			// Handle boolean attributes.
-			if ( $value === true ) {
+			if ( true === $value ) {
 				$html[] = esc_attr( $name );
 				continue;
 			}
@@ -116,8 +116,8 @@ class CFB_Html {
 	 * @since     1.0.0
 	 * @access    public
 	 *
-	 * @param array $attributes_1 Initial attributes array to merge
-	 * @param array $attributes_2 Attributes array to be merged into initial attributes array
+	 * @param array $attributes_1 Initial attributes array to merge.
+	 * @param array $attributes_2 Attributes array to be merged into initial attributes array.
 	 *
 	 * @return array    Resulting attributes array after merging
 	 */
@@ -154,7 +154,7 @@ class CFB_Html {
 	 * @param array $attributes
 	 * @param array $options
 	 * @param array $value
-	 * @param bool  $tidy_html
+	 * @param bool $tidy_html
 	 *
 	 * @return string
 	 */
@@ -164,7 +164,7 @@ class CFB_Html {
 		foreach ( $options as $option => $name ) {
 			$options_html[] = self::tag( 'option', array(
 				'value'    => $option,
-				'selected' => in_array( $option, $value )
+				'selected' => in_array( $option, $value ),
 			), $name );
 		}
 
@@ -174,17 +174,16 @@ class CFB_Html {
 	}
 
 	/**
-	 * Checks if tag is self enclosing or not.
+	 * Checks if an HTML tag is self enclosing or not.
 	 *
 	 * @since     1.0.0
 	 * @access    public
 	 *
-	 * @param $tag_name
+	 * @param string $tag_name HTML tag to be checked.
 	 *
 	 * @return bool
 	 */
 	public static function is_empty_tag( $tag_name ) {
-		return in_array( $tag_name, self::$_empty_tags );
+		return isset( self::$_empty_tags[ $tag_name ] );
 	}
-
 }

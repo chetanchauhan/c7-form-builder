@@ -25,6 +25,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * @package           C7_Form_Builder
  **/
 
 // If this file is called directly, abort.
@@ -71,29 +73,29 @@ function _cfb_autoload_classes( $class_name ) {
 	$file_name        = 'class-' . str_replace( '_', '-', strtolower( $class_name ) ) . '.php';
 	$class_group      = substr( $class_name, strrpos( $class_name, '_' ) + 1 );
 	$abstract_classes = array(
-		'CFB_Core',
-		'CFB_Field',
-		'CFB_Field_View',
-		'CFB_Field_View_Helper',
-		'CFB_Form',
-		'CFB_Form_View',
-		'CFB_Form_View_Helper',
-		'CFB_Storage',
-		'CFB_View',
-		'CFB_View_Helper',
+		'CFB_Core'              => true,
+		'CFB_Field'             => true,
+		'CFB_Field_View'        => true,
+		'CFB_Field_View_Helper' => true,
+		'CFB_Form'              => true,
+		'CFB_Form_View'         => true,
+		'CFB_Form_View_Helper'  => true,
+		'CFB_Storage'           => true,
+		'CFB_View'              => true,
+		'CFB_View_Helper'       => true,
 	);
 
-	if ( in_array( $class_name, $abstract_classes ) ) {
+	if ( isset( $abstract_classes[ $class_name ] ) ) {
 		$path = 'abstracts/';
-	} elseif ( $class_group === 'Form' ) {
+	} elseif ( 'Form' === $class_group ) {
 		$path = 'forms/';
-	} elseif ( $class_group === 'Field' ) {
+	} elseif ( 'Field' === $class_group ) {
 		$path = 'fields/';
-	} elseif ( $class_group === 'Storage' ) {
+	} elseif ( 'Storage' === $class_group ) {
 		$path = 'storage/';
-	} elseif ( $class_group === 'View' ) {
+	} elseif ( 'View' === $class_group ) {
 		$path = 'views/';
-	} elseif ( $class_group === 'Helper' ) {
+	} elseif ( 'Helper' === $class_group ) {
 		$path = 'views/_helpers/';
 	}
 

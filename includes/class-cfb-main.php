@@ -3,7 +3,7 @@
  * Main C7 Form Builder Class
  *
  * @package    C7_Form_Builder
- * @subpackage C7_Form_Builder/Abstracts
+ * @subpackage C7_Form_Builder/Main
  * @author     Chetan Chauhan <chetanchauhan1991@gmail.com>
  * @license    GPL-2.0+
  * @link       https://github.com/chetanchauhan/c7-form-builder/
@@ -255,9 +255,9 @@ final class CFB_Main {
 	 * @since  1.0.0
 	 * @access public
 	 *
-	 * @param string $form_name Unique name of the form(required)
-	 * @param string $form_type Type of the form
-	 * @param array $form_args Form args(optional)
+	 * @param string $form_name Unique name of the form(required).
+	 * @param string $form_type Type of the form.
+	 * @param array $form_args Form args.
 	 *
 	 * @return bool
 	 */
@@ -294,7 +294,7 @@ final class CFB_Main {
 	 * @since     1.0.0
 	 * @access    public
 	 *
-	 * @param string $form_name
+	 * @param string $form_name Name of the registered form.
 	 *
 	 * @return bool|CFB_Form    Form object or false if form is not registered.
 	 */
@@ -313,7 +313,7 @@ final class CFB_Main {
 	/**
 	 * Checks if a form is registered or not.
 	 *
-	 * @param $form_name
+	 * @param string $form_name Name of the form to be checked.
 	 *
 	 * @return bool
 	 */
@@ -500,8 +500,8 @@ final class CFB_Main {
 	 * @since  1.0.0
 	 * @access public
 	 *
-	 * @param      $view_type
-	 * @param      $class_name
+	 * @param string $view_type
+	 * @param string $class_name
 	 * @param bool $force
 	 *
 	 * @return bool

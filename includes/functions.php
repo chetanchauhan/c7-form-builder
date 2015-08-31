@@ -22,7 +22,7 @@ if ( ! function_exists( 'array_replace_recursive' ) ) {
 	 *
 	 * @since     1.0.0
 	 *
-	 * @param array $base         The array in which elements are replaced.
+	 * @param array $base The array in which elements are replaced.
 	 * @param array $replacements The array from which elements will be extracted.
 	 *
 	 * @return array
@@ -65,7 +65,7 @@ if ( ! function_exists( 'array_replace_recursive' ) ) {
 function cfb_is_post_edit_screen() {
 	global $pagenow;
 
-	return $pagenow == 'post.php' || $pagenow == 'post-new.php';
+	return 'post.php' === $pagenow || 'post-new.php' === $pagenow;
 }
 
 /**
@@ -77,7 +77,7 @@ function cfb_is_post_edit_screen() {
 function cfb_is_user_edit_screen() {
 	global $pagenow;
 
-	return $pagenow == 'profile.php' || $pagenow == 'user-edit.php';
+	return 'profile.php' === $pagenow || 'user-edit.php' === $pagenow;
 }
 
 /**
@@ -88,8 +88,8 @@ function cfb_is_user_edit_screen() {
  */
 function cfb_is_term_edit_screen() {
 	global $pagenow;
-	if ( $pagenow == 'edit-tags.php' ) {
-		return isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'edit' ? 'edit' : 'add';
+	if ( 'edit-tags.php' === $pagenow ) {
+		return isset( $_REQUEST['action'] ) && 'edit' === $_REQUEST['action'] ? 'edit' : 'add';
 	}
 
 	return false;
@@ -131,7 +131,7 @@ function _cfb_cmp_priority( $a, $b ) {
 	$ap = isset( $a['priority'] ) ? $a['priority'] : 10;
 	$bp = isset( $b['priority'] ) ? $b['priority'] : 10;
 
-	if ( $ap == $bp ) {
+	if ( $ap === $bp ) {
 		return 0;
 	}
 
@@ -178,7 +178,7 @@ function cfb_get_object_id( $object_type ) {
  *
  * @since   1.0.0
  *
- * @param $array Array to be checked.
+ * @param array $array Array to be checked.
  *
  * @return bool
  */
