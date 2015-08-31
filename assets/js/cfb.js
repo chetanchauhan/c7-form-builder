@@ -160,7 +160,7 @@ window.c7FormBuilder = (function ($) {
 					forcePlaceholderSize: true,
 					forceHelperSize: true,
 					tolerance: 'pointer',
-					placeholder: 'cfb-field-control-placeholder',
+					placeholder: 'cfb-field-control cfb-field-control-placeholder',
 					start: function (event, ui) {
 						// Cache the original position.
 						var index = $(event.target).find('> .cfb-field-control').not('.cfb-empty-control').index(ui.item);
