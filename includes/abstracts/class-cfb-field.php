@@ -170,6 +170,10 @@ abstract class CFB_Field extends CFB_Core {
 	 *
 	 * This ensures that the field value is always submitted.
 	 *
+	 * Note: Currently, this only adds a required boolean HTML attribute to
+	 * the supported field controls, and thus, doesn't work in browsers
+	 * not supporting it.
+	 *
 	 * @since     1.0.0
 	 * @access    public
 	 *
@@ -307,7 +311,7 @@ abstract class CFB_Field extends CFB_Core {
 	 * @since     1.0.0
 	 * @access    public
 	 *
-	 * @param  mixed  $value
+	 * @param  mixed $value
 	 * @param  string $html_name
 	 * @param  string $html_id
 	 *
@@ -327,6 +331,7 @@ abstract class CFB_Field extends CFB_Core {
 				'placeholder' => $this->placeholder,
 				'readonly'    => $this->readonly,
 				'disabled'    => $this->disabled,
+				'required'    => $this->required,
 			)
 		);
 
@@ -592,7 +597,7 @@ abstract class CFB_Field extends CFB_Core {
 	 * @access    public
 	 * @return string
 	 */
-	public function get_html_id(){
+	public function get_html_id() {
 		if ( $this->parent ) {
 			$html_id = $this->parent->get_html_id() . '-' . $this->name;
 		} else {

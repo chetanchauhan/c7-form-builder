@@ -63,6 +63,7 @@ class CFB_Textarea_Field extends CFB_Field {
 				'placeholder' => $this->placeholder,
 				'readonly'    => $this->readonly,
 				'disabled'    => $this->disabled,
+				'required'    => $this->required,
 			)
 		);
 

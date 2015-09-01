@@ -36,7 +36,7 @@ class CFB_Select_Field extends CFB_Field {
 	public $multiple = false;
 
 	/**
-	 * @param mixed  $value
+	 * @param mixed $value
 	 * @param string $html_name
 	 * @param string $html_id
 	 *
@@ -55,6 +55,7 @@ class CFB_Select_Field extends CFB_Field {
 				'readonly' => $this->readonly,
 				'disabled' => $this->disabled,
 				'multiple' => $this->multiple,
+				'required' => $this->required,
 			)
 		);
 
