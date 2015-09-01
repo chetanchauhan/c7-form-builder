@@ -57,7 +57,10 @@ class CFB_Label_Field_View_Helper extends CFB_Field_View_Helper {
 	 * @return string
 	 */
 	protected function get_html_content() {
+		if ( $this->field->required ) {
+			return $this->field->label . ' <span class="cfb-required">*</span>';
+		}
+
 		return $this->field->label;
 	}
-
 }

@@ -56,6 +56,10 @@
 	resize: vertical;
 }
 
+.cfb-required {
+	color: #d54e21;
+}
+
 .cfb-field-description {
 	font-size: 13px;
 	font-style: italic;
