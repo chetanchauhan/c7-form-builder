@@ -127,9 +127,9 @@
 }
 
 /* Color Field */
-.cfb-color-field.cfb-repeatable .cfb-field-control,
-.cfb-color-field.cfb-repeatable .cfb-sort-handle,
-.cfb-color-field.cfb-repeatable .cfb-repeatable-handles {
+.cfb-color-field .cfb-field-control,
+.cfb-color-field .cfb-sort-handle,
+.cfb-color-field .cfb-repeatable-handles {
 	width: auto;
 }
 
