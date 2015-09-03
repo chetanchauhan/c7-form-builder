@@ -12,8 +12,7 @@
 	font-style: normal;
 }
 
-[class^="cfb-icon-"],
-[class*=" cfb-icon-"] {
+.cfb-icon {
 	font-family: "C7 Form Builder";
 	font-weight: normal;
 	font-style: normal;
