@@ -31,7 +31,7 @@ class CFB_Description_Form_View_Helper extends CFB_Form_View_Helper {
 	 * @return string
 	 */
 	protected function get_html_content() {
-		return wpautop( $this->form->description );
+		return $this->form->description;
 	}
 
 }
