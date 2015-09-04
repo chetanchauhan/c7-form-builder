@@ -42,12 +42,18 @@
 /* Base styling for fields and controls
 --------------------------------------------- */
 
+.cfb-form-description-wrapper,
+.cfb-form-fields > .cfb-field-wrapper {
+	padding: 0.5em 0 1em;
+}
+
 .cfb-text-field input,
 .cfb-password-field input,
 .cfb-email-field input,
 .cfb-number-field input,
 .cfb-url-field input,
-.cfb-textarea-field textarea {
+.cfb-textarea-field textarea,
+#profile-page .cfb-textarea-field textarea {
 	width: 100%;
 }
 
@@ -60,7 +66,8 @@
 }
 
 .cfb-field-description {
-	font-size: 13px;
+	margin: 0;
+	color: #666;
 	font-style: italic;
 }
 
@@ -213,7 +220,7 @@
 }
 
 .postbox .cfb-tab-content {
-	padding: 10px;
+	padding: 0 10px;
 	border: 1px solid #e5e5e5;
 	border-top: none;
 }
