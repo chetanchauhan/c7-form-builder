@@ -90,7 +90,7 @@ window.c7FormBuilder = (function ($) {
 			editor: {
 				initialize: function (selection) {
 					cfb.getAllFieldControls(selection, {type: 'editor'}).each(function () {
-						var textarea = $(this).find('textarea.wp-editor-area'),
+						var textarea = $(this).find('.wp-editor-area'),
 							id = textarea.attr('id'),
 							oldID = textarea.data('prev-id');
 
@@ -125,7 +125,7 @@ window.c7FormBuilder = (function ($) {
 				},
 				destroy: function (selection) {
 					cfb.getAllFieldControls(selection, {type: 'editor'}).each(function () {
-						var textarea = $(this).find('textarea.wp-editor-area'),
+						var textarea = $(this).find('.wp-editor-area'),
 							id = textarea.attr('id'),
 							ed = tinymce.get(id);
 
@@ -602,7 +602,14 @@ window.c7FormBuilder = (function ($) {
 	wp.hooks.addAction('cfb.ready_editor_field_control', cfb.fields.editor.initialize);
 	wp.hooks.addAction('cfb.pre_remove_control', cfb.fields.editor.destroy);
 	wp.hooks.addAction('cfb.pre_update_controls', cfb.fields.editor.destroy);
-	wp.hooks.addAction('cfb.updated_controls', cfb.fields.editor.initialize);
+	wp.hooks.addAction('cfb.updated_controls', function (controls) {
+		cfb.getAllFieldControls(controls, {type: 'editor', includeEmpty: true}).each(function () {
+			var newID = $(this).find('.wp-editor-area').attr('id');
+			$(this).find('.wp-switch-editor[data-wp-editor-id]').attr('data-wp-editor-id', newID);
+			$(this).find('.add_media[data-editor]').attr('data-editor', newID);
+		});
+		cfb.fields.editor.initialize(controls);
+	});
 
 	// Destroy editor instance on sortstart.
 	wp.hooks.addAction('cfb.sortstart', function (e, ui) {
