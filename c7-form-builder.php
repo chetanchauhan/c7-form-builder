@@ -10,7 +10,7 @@
  * Domain Path:       /languages
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Copyright (c) 2014 Chetan Chauhan (email : chetanchauhan1991@gmail.com)
+ * Copyright (c) 2014-2015 Chetan Chauhan (email : chetanchauhan1991@gmail.com)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
