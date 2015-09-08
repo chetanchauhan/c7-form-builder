@@ -90,23 +90,23 @@ window.c7FormBuilder = (function ($) {
 			editor: {
 				initialize: function (selection) {
 					cfb.getAllFieldControls(selection, {type: 'editor'}).each(function () {
-						var textarea = $(this).find('.wp-editor-area'),
-							id = textarea.attr('id'),
-							oldID = textarea.data('prev-id');
+						var wrap = $(this).find('.wp-editor-wrap'),
+							id = wrap.find('.wp-editor-area').attr('id'),
+							settings = wrap.attr('data-editor-settings');
 
 						if (typeof( tinyMCEPreInit.mceInit[id] ) === 'undefined') {
-							tinyMCEPreInit.mceInit[id] = $.extend({}, tinyMCEPreInit.mceInit[oldID], {
+							tinyMCEPreInit.mceInit[id] = $.extend({}, tinyMCEPreInit.mceInit[settings], {
 								selector: '#' + id,
 								body_class: id
 							});
 						}
 
 						if (typeof( tinyMCEPreInit.qtInit[id] ) === 'undefined') {
-							tinyMCEPreInit.qtInit[id] = $.extend({}, tinyMCEPreInit.qtInit[oldID], {id: id});
+							tinyMCEPreInit.qtInit[id] = $.extend({}, tinyMCEPreInit.qtInit[settings], {id: id});
 						}
 
 						// Initialize tinyMCE
-						if (!tinymce.get(id) && $(this).find('.wp-editor-wrap').hasClass('tmce-active')) {
+						if (!tinymce.get(id) && wrap.hasClass('tmce-active')) {
 							try {
 								tinymce.init(tinyMCEPreInit.mceInit[id]);
 							} catch (e) {
@@ -128,11 +128,6 @@ window.c7FormBuilder = (function ($) {
 						var textarea = $(this).find('.wp-editor-area'),
 							id = textarea.attr('id'),
 							ed = tinymce.get(id);
-
-						// Save the current id for reinitialization.
-						if (!textarea.attr('data-prev-id')) {
-							textarea.attr('data-prev-id', textarea.attr('id'));
-						}
 
 						if (ed) {
 							ed.save();
