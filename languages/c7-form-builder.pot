@@ -2,10 +2,10 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: C7 Form Builder 1.0.0-beta\n"
+"Project-Id-Version: C7 Form Builder 1.0.0-beta.2\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/chetanchauhan/c7-form-builder/issues\n"
-"POT-Creation-Date: 2015-08-31 11:34:30+00:00\n"
+"POT-Creation-Date: 2015-09-08 19:28:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"

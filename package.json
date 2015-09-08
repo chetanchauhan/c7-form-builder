@@ -1,6 +1,6 @@
 {
   "name": "c7-form-builder",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-beta.2",
   "description": "Provides an easy to use and powerful API for building forms that can be displayed, customized and saved any way you want.",
   "main": "Gruntfile.js",
   "repository": {

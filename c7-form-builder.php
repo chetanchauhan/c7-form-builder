@@ -3,13 +3,14 @@
  * Plugin Name:       C7 Form Builder
  * Plugin URI:        https://github.com/chetanchauhan/c7-form-builder/
  * Description:       Provides an easy to use and powerful API for building forms that can be displayed, customized and saved any way you want.
- * Version:           1.0.0-beta
+ * Version:           1.0.0-beta.2
  * Author:            Chetan Chauhan
  * Author URI:        https://github.com/chetanchauhan/
  * Text Domain:       c7-form-builder
  * Domain Path:       /languages
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ *
  * Copyright (c) 2014-2015 Chetan Chauhan (email : chetanchauhan1991@gmail.com)
  *
  * This program is free software; you can redistribute it and/or
@@ -36,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 // C7 Form Builder version, used for cache-busting of style and script file references.
 if ( ! defined( 'C7_FORM_BUILDER_VERSION' ) ) {
-	define( 'C7_FORM_BUILDER_VERSION', '1.0.0-beta' );
+	define( 'C7_FORM_BUILDER_VERSION', '1.0.0-beta.2' );
 }
 
 // Define the plugin directory path.
